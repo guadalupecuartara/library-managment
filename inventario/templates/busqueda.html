@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container rounded bg-secondary py-3">
+  <form method="POST" {% if request.method == 'GET' %}action="{% url 'busqueda' %}"{% endif %}>
+    {% csrf_token %}
+    <div class="mb-3">
+      <textarea name="busqueda" placeholder="INGRESE BUSQUEDA" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <select name="campo" class="form-select">
+        <option selected>Seleccione una opcion</option>
+        <option value="titulo">Titulo</option>
+        <option value="autor">Autor</option>
+        <option value="genero">Genero</option>
+        <option value="sinopsis">Sinopsis</option>
+      </select>
+    </div>
+    <button class="btn btn-info">BUSCAR</button>
+  </form>
+  
+</div>
+{% endblock %}
